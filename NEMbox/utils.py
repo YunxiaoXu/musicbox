@@ -68,7 +68,7 @@ def notify_command_osx(msg, msg_type, duration_time=None):
     # sound = 'sound name "/System/Library/Sounds/Ping.aiff"' if msg_type else ""
     # command.append(tpl.format(msg, sound).encode("utf-8"))
     command = [
-        "./notification.app/Contents/MacOS/applet",
+        os.path.dirname(__file__) + "/notification.app/Contents/MacOS/applet",
         msg.encode("utf-8"),
         str(1 if msg_type else 0)
     ]
