@@ -1124,8 +1124,6 @@ class Menu(object):
             }
             self.datatype, self.title = idx_map[idx]
             self.datalist = self.search(self.datatype)
-        else:
-            self.enter_flag = False
 
         # 听歌排行
         elif datatype == "record":
@@ -1133,6 +1131,9 @@ class Menu(object):
             self.title += " > " + self.datalist[idx]
             self.datalist = netease.dig_info(songs, "songs")
             self.datatype = "songs"
+
+        else:
+            self.enter_flag = False
 
     #        self.parser.send(-1)
 
