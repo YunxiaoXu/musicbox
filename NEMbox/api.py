@@ -482,6 +482,15 @@ class NetEase(object):
         playlist_id = TOP_LIST_ALL[idx][1]
         return self.playlist_songlist(playlist_id)
 
+    # 听歌排行 http://music.163.com/weapi/v1/play/record
+    def record_songlist(self, idx=0, userid):
+        path = "/weapi/v1/play/record"
+        params = dict(uid=userid, type=-1, limit=1000, n=1000, offset=0, total="true")
+        custom_cookies = dict(os=platform.system())
+        resp = self.request("POST", path, params, {"code": -1}, custom_cookies)
+        listen_data = resp['weekData' if idx == 0 else 'allData']
+        return [d['song'] for d in listen_data]
+
     # 歌手单曲
     def artists(self, artist_id):
         path = "/weapi/v1/artist/{}".format(artist_id)

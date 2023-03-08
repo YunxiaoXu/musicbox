@@ -615,7 +615,7 @@ class Ui(object):
                         + datalist[i]["creator_name"],
                     )
 
-        elif datatype in ("toplists", "playlist_classes", "playlist_class_detail"):
+        elif datatype in ("toplists", "playlist_classes", "playlist_class_detail", "record"):
             for i in range(offset, min(len(datalist), offset + step)):
                 if i == index:
                     self.addstr(

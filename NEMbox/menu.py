@@ -126,6 +126,7 @@ class Menu(object):
             {"entry_name": "私人FM"},
             {"entry_name": "搜索"},
             {"entry_name": "帮助"},
+            {"entry_name": "听歌排行"},
         ]
         self.offset = 0
         self.index = 0
@@ -1126,6 +1127,13 @@ class Menu(object):
         else:
             self.enter_flag = False
 
+        # 听歌排行
+        elif datatype == "record":
+            songs = netease.record_songlist(idx, self.userid)
+            self.title += " > " + self.datalist[idx]
+            self.datalist = netease.dig_info(songs, "songs")
+            self.datatype = "songs"
+
     #        self.parser.send(-1)
 
     def show_playing_song(self):
@@ -1252,3 +1260,7 @@ class Menu(object):
             self.datatype = "help"
             self.title += " > 帮助"
             self.datalist = shortcut
+        elif idx == 11:
+            self.datatype = "record"
+            self.datalist = ["最近一周", "所有时间"]
+            self.title += " > 听歌排行"
