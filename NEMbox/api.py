@@ -483,7 +483,7 @@ class NetEase(object):
         return self.playlist_songlist(playlist_id)
 
     # 听歌排行 http://music.163.com/weapi/v1/play/record
-    def record_songlist(self, idx=0, userid):
+    def record_songlist(self, userid, idx=0):
         path = "/weapi/v1/play/record"
         params = dict(uid=userid, type=-1, limit=1000, n=1000, offset=0, total="true")
         custom_cookies = dict(os=platform.system())

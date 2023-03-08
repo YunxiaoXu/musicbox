@@ -1127,7 +1127,7 @@ class Menu(object):
 
         # 听歌排行
         elif datatype == "record":
-            songs = netease.record_songlist(idx, self.userid)
+            songs = netease.record_songlist(self.userid, idx)
             self.title += " > " + self.datalist[idx]
             self.datalist = netease.dig_info(songs, "songs")
             self.datatype = "songs"
